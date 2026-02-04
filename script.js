@@ -61,8 +61,11 @@ class Calculator {
                 break;
             case '÷':
                 if (current === 0) {
-                    alert('Cannot divide by zero');
-                    this.clear();
+                    this.currentOperand = 'Error';
+                    this.operation = undefined;
+                    this.previousOperand = '';
+                    this.updateDisplay();
+                    setTimeout(() => this.clear(), 1500);
                     return;
                 }
                 computation = prev / current;
@@ -102,7 +105,11 @@ class Calculator {
     }
 
     updateDisplay() {
-        this.currentOperandElement.textContent = this.getDisplayNumber(this.currentOperand);
+        if (this.currentOperand === 'Error') {
+            this.currentOperandElement.textContent = 'Error';
+        } else {
+            this.currentOperandElement.textContent = this.getDisplayNumber(this.currentOperand);
+        }
         if (this.operation != null) {
             this.previousOperandElement.textContent = 
                 `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`;
@@ -116,6 +123,25 @@ const previousOperandElement = document.getElementById('previous-operand');
 const currentOperandElement = document.getElementById('current-operand');
 
 const calculator = new Calculator(previousOperandElement, currentOperandElement);
+
+// Button click event delegation
+document.querySelector('.buttons').addEventListener('click', (event) => {
+    if (!event.target.matches('button')) return;
+    
+    const button = event.target;
+    
+    if (button.dataset.number !== undefined) {
+        calculator.appendNumber(button.dataset.number);
+    } else if (button.dataset.operation !== undefined) {
+        calculator.chooseOperation(button.dataset.operation);
+    } else if (button.dataset.action === 'clear') {
+        calculator.clear();
+    } else if (button.dataset.action === 'delete') {
+        calculator.delete();
+    } else if (button.dataset.action === 'equals') {
+        calculator.compute();
+    }
+});
 
 // Keyboard support
 document.addEventListener('keydown', (event) => {

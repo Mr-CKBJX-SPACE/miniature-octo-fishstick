@@ -13,29 +13,29 @@
             <div class="current-operand" id="current-operand">0</div>
         </div>
         <div class="buttons">
-            <button class="button function" onclick="calculator.clear()">AC</button>
-            <button class="button function" onclick="calculator.delete()">DEL</button>
-            <button class="button function" onclick="calculator.chooseOperation('%')">%</button>
-            <button class="button operator" onclick="calculator.chooseOperation('÷')">÷</button>
+            <button class="button function" data-action="clear">AC</button>
+            <button class="button function" data-action="delete">DEL</button>
+            <button class="button function" data-operation="%">%</button>
+            <button class="button operator" data-operation="÷">÷</button>
             
-            <button class="button number" onclick="calculator.appendNumber('7')">7</button>
-            <button class="button number" onclick="calculator.appendNumber('8')">8</button>
-            <button class="button number" onclick="calculator.appendNumber('9')">9</button>
-            <button class="button operator" onclick="calculator.chooseOperation('×')">×</button>
+            <button class="button number" data-number="7">7</button>
+            <button class="button number" data-number="8">8</button>
+            <button class="button number" data-number="9">9</button>
+            <button class="button operator" data-operation="×">×</button>
             
-            <button class="button number" onclick="calculator.appendNumber('4')">4</button>
-            <button class="button number" onclick="calculator.appendNumber('5')">5</button>
-            <button class="button number" onclick="calculator.appendNumber('6')">6</button>
-            <button class="button operator" onclick="calculator.chooseOperation('-')">-</button>
+            <button class="button number" data-number="4">4</button>
+            <button class="button number" data-number="5">5</button>
+            <button class="button number" data-number="6">6</button>
+            <button class="button operator" data-operation="-">-</button>
             
-            <button class="button number" onclick="calculator.appendNumber('1')">1</button>
-            <button class="button number" onclick="calculator.appendNumber('2')">2</button>
-            <button class="button number" onclick="calculator.appendNumber('3')">3</button>
-            <button class="button operator" onclick="calculator.chooseOperation('+')">+</button>
+            <button class="button number" data-number="1">1</button>
+            <button class="button number" data-number="2">2</button>
+            <button class="button number" data-number="3">3</button>
+            <button class="button operator" data-operation="+">+</button>
             
-            <button class="button number zero" onclick="calculator.appendNumber('0')">0</button>
-            <button class="button number" onclick="calculator.appendNumber('.')">.</button>
-            <button class="button equals" onclick="calculator.compute()">=</button>
+            <button class="button number zero" data-number="0">0</button>
+            <button class="button number" data-number=".">.</button>
+            <button class="button equals" data-action="equals">=</button>
         </div>
     </div>
     <script src="script.js"></script>
